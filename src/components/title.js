@@ -3,7 +3,7 @@ import '../styles/title.css';
 
 export function MyTitle () {
   return (
-    <div class="center">
+    <div className="center">
     <h1>
         <span>Big </span>
         
