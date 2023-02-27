@@ -11,7 +11,7 @@ const About = () => {
               <span className='line'></span>
               <p>Big Brother permettra à des entreprises organisant des événements susceptibles d’attirer des foules, de surveiller en temps réel les individus et de faciliter le repérage d’éléments précis. Ce dispositif peut également être utilisé par des services de renseignement.</p>
               <p>une solution technologique et économique. </p>
-              <button className='button2'>Explore More</button>
+              <button className='button1'>Explore More</button>
           </div>
       </div>
     </div>

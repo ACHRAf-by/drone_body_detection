@@ -9,12 +9,12 @@ export function MyLogo() {
     useEffect(() => {
         setTimeout(() => {
           setSpinning(false);
-        }, 1000);
+        }, 500);
       }, []);
 
     return (
 
-        <div style={{ position: 'relative', top: '20px', right: '200px' }}>
+        <div id="logo" style={{ position: 'relative', top: '20px', right: '200px' }}>
             <img src={Logo} alt="Big Brother Logo" className={spinning ? "spin":""} />
         </div>
       );
