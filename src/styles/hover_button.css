@@ -1,0 +1,163 @@
+body{
+    padding:0px;
+    margin: 0px;
+    background-color: #000000;
+    width:100%;
+    height:100vh;
+}
+.wrapper{
+    position: absolute;
+    top:6.5%;
+    left:90%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height:auto;
+}
+.button1{
+    width:180px;
+    height:70px;
+    background: linear-gradient(to left top, #1a2d3d 50%, #14222E 50%);
+    border-style: none;
+    color:#fff;
+    font-size: 26px;
+    letter-spacing: 3px;
+	font-family: 'Bebas Neue', cursive;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0px;
+    overflow: hidden;
+    transition: all .5s;
+    box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+}
+.button1 span{
+    position: absolute;
+    display: block;
+}
+.button1 span:nth-child(1){
+    height: 3px;
+    width:200px;
+    top:0px;
+    left:-200px;
+    background: linear-gradient(to right, rgba(0,0,0,0), #f6e58d);
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    animation: span1 2s linear infinite;
+    animation-delay: 1s;
+}
+
+@keyframes span1{
+    0%{
+        left:-200px
+    }
+    100%{
+        left:200px;
+    }
+}
+.button1 span:nth-child(2){
+    height: 70px;
+    width: 3px;
+    top:-70px;
+    right:0px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), #f6e58d);
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    animation: span2 2s linear infinite;
+    animation-delay: 2s;
+}
+@keyframes span2{
+    0%{
+        top:-70px;
+    }
+    100%{
+        top:70px;
+    }
+}
+.button1 span:nth-child(3){
+    height:3px;
+    width:200px;
+    right:-200px;
+    bottom: 0px;
+    background: linear-gradient(to left, rgba(0,0,0,0), #f6e58d);
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+    animation: span3 2s linear infinite;
+    animation-delay: 3s;
+}
+@keyframes span3{
+    0%{
+        right:-200px;
+    }
+    100%{
+        right: 200px;
+    }
+}
+
+.button1 span:nth-child(4){
+    height:70px;
+    width:3px;
+    bottom:-70px;
+    left:0px;
+    background: linear-gradient(to top, rgba(0,0,0,0), #f6e58d);
+    border-top-right-radius: 1px;
+    border-top-left-radius: 1px;
+    animation: span4 2s linear infinite;
+    animation-delay: 4s;
+}
+@keyframes span4{
+    0%{
+        bottom: -70px;
+    }
+    100%{
+        bottom:70px;
+    }
+}
+
+.button1:hover{
+    transition: all .5s;
+    transform: rotate(-3deg) scale(1.1);
+    box-shadow: 0px 3px 5px rgba(0,0,0,.4);
+}
+.button1:hover span{
+    animation-play-state: paused;
+}
+
+/* Hover button for about */
+
+.button2 {
+    --c: #fff; /* text color */
+    
+    background: 
+      linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,
+      #1a2d3d; /* background color */
+    color: #0000;
+    border: none;
+    transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
+    text-shadow: 
+      calc(var(--_i,-1)* 0.08em) -.01em 0   var(--c),
+      calc(var(--_i,-1)*-0.08em)  .01em 2px #0004;
+    outline-offset: .1em;
+    transition: 0.3s;
+  }
+  
+  .button2:hover,
+  .button2:focus-visible {
+    --_p: 0%;
+    --_i: 1;
+  }
+  .button2:active {
+    text-shadow: none;
+    color: var(--c);
+    box-shadow: inset 0 0 9e9q #0005;
+    transition: 0s;
+  }
+
+  .button2 {
+    font-family: system-ui, sans-serif;
+    font-weight:bold;
+    font-size: 2.4rem;
+    margin-top: 60px;
+    cursor: pointer;
+    padding: .1em .3em;
+  }
