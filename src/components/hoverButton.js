@@ -3,7 +3,7 @@ import '../styles/hover_button.css';
 
 export function MyButton({ text, onClick }) {
   return (
-    <div class="wrapper">
+    <div className="wrapper">
     <button className='button1'>
         {text} 
         <span></span>
