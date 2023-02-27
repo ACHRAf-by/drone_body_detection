@@ -14,3 +14,17 @@ export function MyTitle () {
     </div> 
 );
 }
+
+export function MyTitle2 () {
+  return (
+    <div className="center">
+    <h1>
+        <span>Brother </span>
+        
+        <span>Brother </span>
+        <span>Brother </span>
+    </h1>
+
+    </div> 
+);
+}

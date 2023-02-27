@@ -11,6 +11,6 @@ export function MyButton({ text, onClick }) {
         <span></span>
         <span></span>
     </button>
-    </div>  
+    </div>
 );
 }

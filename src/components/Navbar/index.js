@@ -27,7 +27,7 @@ const Navbar = () => {
                         <p className='menu'>Products</p>
                     </NavLink>
                     <NavLink to="/contact" activeStyle>
-                        <p className='menu'>Contac Us</p>
+                        <p className='menu'>Contact Us</p>
                     </NavLink>
                     <NavLink to="/demo" activeStyle>
                         <p className='menu'> Demo</p>
