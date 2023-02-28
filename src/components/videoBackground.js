@@ -5,7 +5,7 @@ import '../styles/video.css';
 export function VideoBackground() {
   return (
     <div>
-      <video autoPlay loop muted id='video'>
+      <video autoPlay loop muted id='videoBackground'>
           <source src = {backgroundVideo} type='video/mp4'/>
       </video>
       <div className="content">
