@@ -8,6 +8,7 @@ import Contact from './pages/contact';
 import Products from './pages/products';
 import PreStarting from './pages/preStarting';
 import Demo from './pages/demo';
+import Tracking from './pages/tracking';
 
 function App() {
 return (
@@ -20,6 +21,7 @@ return (
             <Route path='/products' element={<Products/>} />
             <Route path='/demo' element={<Demo/>} />
             <Route path='/getStarted' element={<PreStarting/>} />
+            <Route path='/tracking' element={<Tracking/>} />
         </Routes>
     </Router>
 );

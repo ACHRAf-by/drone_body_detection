@@ -11,6 +11,10 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
+.section-one__title {
+    padding-top: 50px;
+}
+
 .about h2 {
     font-size: 3rem;
     color: #fff;

@@ -4,11 +4,9 @@ import '../styles/video.css';
 
 export function Video() {
   return (
-    <div>
       <video autoPlay id='video'>
           <source src = {backgroundVideo} type='video/mp4'/>
       </video>
-    </div>
   );
 }
   
