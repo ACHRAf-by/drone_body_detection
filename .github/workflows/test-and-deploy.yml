@@ -43,7 +43,7 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "⚙️ lint result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                      "text": "✨ lint result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
                     }
                   }
                 ]
@@ -89,7 +89,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "⚙️ Test result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                    "text": "🧪 Test result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
                   }
                 }
               ]
@@ -113,6 +113,29 @@ jobs:
           from_branch: master
           target_branch: production
           github_token: ${{ github.token }}
+      
+      - name: Send Notification to Slack
+        if: always()
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          # For posting a rich message using Block Kit
+          payload: |
+            {
+              "text": "👁️ Big Brother Pipeline : ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "👷 Merge to production result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  }
+                }
+              ]
+            }
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
       
   build-production:
     environment: production
@@ -147,7 +170,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "⚙️ Deploy Production to Docker Hub result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  "text": "🐋 Deploy Production to Docker Hub result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
                 }
               }
             ]
