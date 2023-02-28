@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/hover_button.css';
 
-export function MyButton({ text, onClick }) {
+export function MyButton({ text }) {
   return (
     <div className="wrapper">
     <button className='button1'>

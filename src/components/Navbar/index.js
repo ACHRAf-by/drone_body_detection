@@ -16,19 +16,19 @@ const Navbar = () => {
                     <MyLogo />
                 </a>
                 <NavMenu>
-                    <NavLink to="/" activeStyle>
+                    <NavLink to="/" >
                         <p className='menu' id='HomeButton'>Home</p>
                     </NavLink>
-                    <NavLink to="/about" activeStyle>
+                    <NavLink to="/about" >
                         <p className='menu' id='AboutButton'>About</p>
                     </NavLink>
-                    <NavLink to="/products" activeStyle>
+                    <NavLink to="/products" >
                         <p className='menu' id='ProductsButton'>Products</p>
                     </NavLink>
-                    <NavLink to="/contact" activeStyle>
+                    <NavLink to="/contact" >
                         <p className='menu' id='ContactButton'>Contact Us</p>
                     </NavLink>
-                    <NavLink to="/demo" activeStyle>
+                    <NavLink to="/demo" >
                         <p className='menu' id='DemoButton'> Demo</p>
                     </NavLink>
                 </NavMenu>
