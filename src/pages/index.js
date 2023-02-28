@@ -1,12 +1,14 @@
 import React from 'react';
-// import { MyTitle } from '../components/title.js';
-import { Video } from '../components/video.js';
+import { MyTitle } from '../components/title.js';
+import { VideoBackground } from '../components/videoBackground.js';
 
 const Home = () => {
   return (
 
-    <Video />
-
+    <div>
+      <VideoBackground />
+      <MyTitle/>
+    </div>
   );
 };
   
