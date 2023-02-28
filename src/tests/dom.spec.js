@@ -48,7 +48,7 @@ test('Home button should redirect to Home', () => {
 });
 
 test('Clicking on the logo takes you to the home page', () => {
-  const { getByAltText, getByText } = render(<App />);
+  const { getByAltText } = render(<App />);
 
   // Find the logo by its alt text and click it
   const logo = getByAltText('Big Brother Logo');
