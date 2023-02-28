@@ -1,9 +1,10 @@
 #video {
     position: relative;
-    width : 90%;
-    height: auto;
     left: 50%;
-    right: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    border-radius: 10px;
+    margin-top: -50px;
 }
 
 #videoBackground {
