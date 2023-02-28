@@ -7,6 +7,7 @@ import About from './pages/about';
 import Contact from './pages/contact';
 import Products from './pages/products';
 import PreStarting from './pages/preStarting';
+import Demo from './pages/demo';
 
 function App() {
 return (
@@ -17,6 +18,7 @@ return (
             <Route path='/about' element={<About/>} />
             <Route path='/contact' element={<Contact/>} />
             <Route path='/products' element={<Products/>} />
+            <Route path='/demo' element={<Demo/>} />
             <Route path='/getStarted' element={<PreStarting/>} />
         </Routes>
     </Router>
