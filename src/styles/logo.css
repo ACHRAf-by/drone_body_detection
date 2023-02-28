@@ -1,12 +1,32 @@
 .spin {
-    animation: spin 1s linear infinite;
-  }
+  animation: spin .5s ease-in-out;
+}
+
+#logo:hover,
+#logo:focus-visible {
+  animation : scaleUpDown .5s ease-in-out;
+}
 
 @keyframes spin {
     from {
-      transform: rotate(0deg);
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(-180deg) scale(0.8);
     }
     to {
-      transform: rotate(360deg);
+      transform: rotate(-360deg) scale(1);
     }
+}
+
+@keyframes scaleUpDown {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
 }

@@ -3,12 +3,12 @@ import '../styles/title.css';
 
 export function MyTitle () {
   return (
-    <div class="center">
+    <div className="center">
     <h1>
-        <span>Big </span>
+        <span>BigBrother</span>
         
-        <span>Big </span>
-        <span>Big </span>
+        <span>BigBrother</span>
+        <span>BigBrother </span>
     </h1>
 
     </div> 

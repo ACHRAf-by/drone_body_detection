@@ -2,8 +2,8 @@
 
 .menu {
   font-family: 'Bebas Neue', cursive;
-  font-size: 1.4em;
-  background-image: linear-gradient(gold, gold);
+  font-size: 1.6em;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(126, 182, 255));
   background-size: 100% 5px;
   background-repeat: no-repeat;
   background-position: 100% 0%;
