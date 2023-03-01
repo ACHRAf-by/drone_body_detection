@@ -1,0 +1,16 @@
+.cam_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* aspect-ratio: 16 / 9; */
+    margin: 20px;
+
+}
+
+.liveCameraDiv {
+    width: 55%;
+    height: auto;
+}
