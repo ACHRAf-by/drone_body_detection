@@ -1,73 +1,7 @@
-import React from 'react'
-import cocoSsd from "https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"
-import $ from "https://code.jquery.com/jquery-3.3.1.slim.min.js"
-import "https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+import '@tensorflow/tfjs-backend-cpu';
+import '@tensorflow/tfjs-backend-webgl';
 
-const demosSection = document.getElementById('demos');
-
-var model = undefined;
-
-// Before we can use COCO-SSD class we must wait for it to finish
-// loading. Machine Learning models can be large and take a moment to
-// get everything needed to run.
-cocoSsd.load().then(function (loadedModel) {
-  model = loadedModel;
-  // Show demo section now model is ready to use.
-  demosSection.classList.remove('invisible');
-  $('#spin').hide()
-});
-
-/********************************************************************
-// Continuously grab image from webcam stream and classify it.
-// Note: You must access the demo on https for this to work:
-// https://tensorflow-js-image-classification.glitch.me/
-********************************************************************/
-
-const video = document.getElementById('webcam');
-const liveView = document.getElementById('liveView');
-
-// Check if webcam access is supported.
-function hasGetUserMedia() {
-  return !!(navigator.mediaDevices &&
-    navigator.mediaDevices.getUserMedia);
-}
-
-// Keep a reference of all the child elements we create
-// so we can remove them easilly on each render.
-var children = [];
-
-
-// If webcam supported, add event listener to button for when user
-// wants to activate it.
-if (hasGetUserMedia()) {
-  const enableWebcamButton = document.getElementById('webcamButton');
-  enableWebcamButton.addEventListener('click', enableCam);
-} else {
-  console.warn('getUserMedia() is not supported by your browser');
-}
-
-
-// Enable the live webcam view and start classification.
-function enableCam(event) {
-  if (!model) {
-    console.log('Wait! Model not loaded yet.')
-    return;
-  }
-  
-  // Hide the button.
-  event.target.classList.add('removed');  
-  
-  // getUsermedia parameters.
-  const constraints = {
-    video: true
-  };
-
-  // Activate the webcam stream.
-  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-    video.srcObject = stream;
-    video.addEventListener('loadeddata', predictWebcam);
-  });
-}
+import * as cocoSsd from '@tensorflow-models/coco-ssd';
 
 // function getColorDifference(selectedColorRgb, boxColorRgb) {
 //   const rDiff = Math.abs(selectedColorRgb[0] - boxColorRgb[0]);
@@ -76,6 +10,37 @@ function enableCam(event) {
 
 //   return Math.sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff);
 // }
+
+var model = undefined;
+var video = undefined;
+var liveView = undefined;
+
+
+async function loadModel(){
+
+  await cocoSsd.load().then(function (loadedModel) {
+    model = loadedModel;
+    console.log('Model Loaded')
+    video = document.getElementById('webcam');
+    liveView = document.getElementById('liveView');
+  });
+    // getUsermedia parameters.
+    const constraints = {
+      video: true
+    };
+  
+    // Activate the webcam stream.
+    navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+      video.srcObject = stream;
+      console.log(video)
+      video.addEventListener('loadeddata', predictWebcam);
+    });
+}
+export default loadModel;
+
+// Keep a reference of all the child elements we create
+// so we can remove them easilly on each render.
+var children = [];
 
 function getColorDifference(selectedColor, boxColor) {
   // Convert the RGB values to Lab.
@@ -150,6 +115,7 @@ const selectedColorRgb = [255,235,115];
 const detectionThreshold = 400;
 
 function predictWebcam() {
+  console.log("prediction running")
   // Now let's start classifying the stream.
   model.detect(video).then(function (predictions) {
     // Remove any highlighting we did previous frame.
@@ -199,10 +165,10 @@ function predictWebcam() {
           // Draw the actual bounding box.
           const highlighter = document.createElement('div');
           highlighter.setAttribute('class', 'highlighter');
-          highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
-            + predictions[n].bbox[1] + 'px; width: '
-            + predictions[n].bbox[2] + 'px; height: '
-            + predictions[n].bbox[3] + 'px;';
+          highlighter.style = 'left: ' + (predictions[n].bbox[0] + 100 )+ 'px; top: '
+            + (predictions[n].bbox[1] + 120) + 'px; width: '
+            + (predictions[n].bbox[2] + 60) + 'px; height: '
+            + (predictions[n].bbox[3] + 60)+ 'px;';
 
           if (predictions[n] === closestMatch) {
             highlighter.style.border = 'solid 2px #ff0000';
