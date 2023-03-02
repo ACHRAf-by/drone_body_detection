@@ -116,11 +116,21 @@ body{
 
 .button1:hover{
     transition: all .5s;
-    transform: rotate(-3deg) scale(1.1);
+    transform: scale(1.1);
     box-shadow: 0px 3px 5px rgba(0,0,0,.4);
 }
-.button1:hover span{
-    animation-play-state: paused;
+
+.button1:hover  span:nth-child(1){
+    animation: span1 0.5s linear infinite;
+}
+.button1:hover  span:nth-child(2){
+    animation: span2 0.5s linear infinite;
+}
+.button1:hover  span:nth-child(3){
+    animation: span3 0.5s linear infinite;
+}
+.button1:hover  span:nth-child(4){
+    animation: span4 0.5s linear infinite;
 }
 
 /* Hover button for about */
