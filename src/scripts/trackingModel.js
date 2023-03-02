@@ -3,14 +3,6 @@ import '@tensorflow/tfjs-backend-webgl';
 
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 
-// function getColorDifference(selectedColorRgb, boxColorRgb) {
-//   const rDiff = Math.abs(selectedColorRgb[0] - boxColorRgb[0]);
-//   const gDiff = Math.abs(selectedColorRgb[1] - boxColorRgb[1]);
-//   const bDiff = Math.abs(selectedColorRgb[2] - boxColorRgb[2]);
-
-//   return Math.sqrt(rDiff * rDiff + gDiff * gDiff + bDiff * bDiff);
-// }
-
 var model = undefined;
 var video = undefined;
 var liveView = undefined;
