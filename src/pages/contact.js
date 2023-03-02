@@ -69,7 +69,7 @@ const Contact = () => {
       </div>
       <hr />
       <div className='creator'>
-        <p></p>
+        <p>hugo.guerin@bigbrother.fr</p>
       </div>
     </div>
   </div>
@@ -85,6 +85,7 @@ const Contact = () => {
       </div>
       <hr />
       <div className='creator'>
+        <p>adam.sdiri@bigbrother.fr</p>
       </div>
     </div>
   </div>
@@ -101,6 +102,7 @@ const Contact = () => {
       </div>
       <hr />
       <div className='creator'>
+        <p>willy.pajot@courtepaille.fr</p>
       </div>
     </div>
   </div>
