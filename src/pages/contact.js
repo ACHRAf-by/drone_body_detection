@@ -64,7 +64,7 @@ const Contact = () => {
       <p className='description'>The Detail-Oriented Developer: Ensuring Accuracy and Precision in Every Line of Code</p>
       <div className='tokenInfo'>
         <div className="price">
-          <p>Project Manager</p>
+          <p>Products Management</p>
         </div>
       </div>
       <hr />
@@ -80,7 +80,7 @@ const Contact = () => {
       <p className='description'>The Continuous Learner: Seeking Out Knowledge and Skills to Improve and Excel</p>
       <div className='tokenInfo'>
         <div className="price">
-          <p>Project Manager</p>
+          <p>Product Owner</p>
         </div>
       </div>
       <hr />
@@ -97,7 +97,7 @@ const Contact = () => {
       <p className='description'>Expert cook, works at COURTEPAILLE</p>
       <div className='tokenInfo'>
         <div className="price">
-          <p>Project Manager</p>
+          <p>Sales and Marketing</p>
         </div>
       </div>
       <hr />

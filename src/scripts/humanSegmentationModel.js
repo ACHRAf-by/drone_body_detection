@@ -181,7 +181,6 @@ export default class HumanSegmentationModel{
         // Update widths and heights once video is successfully played otherwise
         // it will have width and height of zero initially causing classification
         // to fail.
-        console.log("VIDEOOOOOOOOOOOOOOOOOOOOOOOO " + this.video);
         this.webcamCanvas.width = this.video.videoWidth;
         this.webcamCanvas.height = this.video.videoHeight;
         this.videoRenderCanvas.width = this.video.videoWidth;

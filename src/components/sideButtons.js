@@ -59,7 +59,7 @@ export function SideButtons () {
                 <span></span>
                 <span></span>
             </button>}
-            { hiddenButton &&< button className="sideButton" onClick={() => handleClassicModelStart()} id='classicButton'>Classic Tracking
+            { hiddenButton &&< button className="sideButton" onClick={() => handleClassicModelStart()} id='classicButton' data-testid="id">Classic Tracking
                 <span></span>
                 <span></span>
                 <span></span>
