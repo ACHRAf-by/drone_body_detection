@@ -34,16 +34,16 @@ Runs the lint on the code and shows you all the problems (syntax, errors, etc ..
 
 A complete CI/CD pipeline is created using Gihub Actions. We also use webhooks to send notifications to our Slack Channel.
 
-##Jobs
+## Jobs
 
--Lint
+- Lint
 Runs the lint on the code and shows you all the problems (syntax, errors, etc ...).
 
--Test
+- Test
 If the lint is OK, runs all the tests of our test suites (DOM elements, Tracking tests ...).
 
--Merge-to-prod
+- Merge-to-prod
 If the tests are OK, merges the code from MASTER to PRODUCTION branch.
 
--Build
+- Build
 When the merge is done, this job logs in to Docker Hub, builds an image using the Dockerfile and then pushes the image to a DockerHub registry.
