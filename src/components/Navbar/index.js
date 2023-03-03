@@ -7,8 +7,12 @@ import {
 import { MyButton } from '../hoverButton';
 import { MyLogo } from '../logo';
 import '../../styles/menu.css'
+import { useLocation } from 'react-router-dom';
+
+
 
 const Navbar = () => {
+    const location = useLocation();
 
     return (
             <Nav>
@@ -33,7 +37,9 @@ const Navbar = () => {
                     </NavLink>
                 </NavMenu>
                 <div className='app'>
-                    <MyButton text="GET STARTED" />
+                    {location.pathname !== '/tracking' && (
+                        <MyButton text="GET STARTED" />
+                    )}
                 </div>
             </Nav>
     );

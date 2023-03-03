@@ -1,9 +1,10 @@
-body{
-    padding:0px;
-    margin: 0px;
-    width:100%;
-    height:100vh;
+.sideButtonDiv {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    max-width: 20%;
 }
+
 .buttonWrapper{
     position: absolute;
     top:6.5%;
@@ -12,7 +13,7 @@ body{
     width: fit-content;
     height:auto;
 }
-.button1{
+.sideButton{
     width:180px;
     height:70px;
     background: linear-gradient(to left top, #1a2d3d 50%, #14222E 50%);
@@ -23,19 +24,20 @@ body{
 	font-family: 'Bebas Neue', cursive;
     font-weight: 600;
     outline: none;
+    border-radius: 5px;
     cursor: pointer;
     position: relative;
     padding: 0px;
     overflow: hidden;
     transition: all .5s;
     box-shadow: 0px 1px 2px rgba(0,0,0,.2);
-    border-radius: 5px;
+    margin : 50px;
 }
-.button1 span{
+.sideButton span{
     position: absolute;
     display: block;
 }
-.button1 span:nth-child(1){
+.sideButton span:nth-child(1){
     height: 3px;
     width:200px;
     top:0px;
@@ -55,7 +57,7 @@ body{
         left:200px;
     }
 }
-.button1 span:nth-child(2){
+.sideButton span:nth-child(2){
     height: 70px;
     width: 3px;
     top:-70px;
@@ -74,7 +76,7 @@ body{
         top:70px;
     }
 }
-.button1 span:nth-child(3){
+.sideButton span:nth-child(3){
     height:3px;
     width:200px;
     right:-200px;
@@ -94,7 +96,7 @@ body{
     }
 }
 
-.button1 span:nth-child(4){
+.sideButton span:nth-child(4){
     height:70px;
     width:3px;
     bottom:-70px;
@@ -114,60 +116,18 @@ body{
     }
 }
 
-.button1:hover{
+.sideButton:hover{
     transition: all .5s;
-    transform: scale(1.1);
+    transform:  scale(1.05);
     box-shadow: 0px 3px 5px rgba(0,0,0,.4);
 }
-
-.button1:hover  span:nth-child(1){
-    animation: span1 0.5s linear infinite;
-}
-.button1:hover  span:nth-child(2){
-    animation: span2 0.5s linear infinite;
-}
-.button1:hover  span:nth-child(3){
-    animation: span3 0.5s linear infinite;
-}
-.button1:hover  span:nth-child(4){
-    animation: span4 0.5s linear infinite;
+.sideButton:hover span{
+    animation-play-state: paused;
 }
 
-/* Hover button for about */
 
-.button2 {
-    --c: #fff; /* text color */
-    
-    background: 
-      linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,
-      #1a2d3d; /* background color */
-    color: #0000;
-    border: none;
-    transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
-    text-shadow: 
-      calc(var(--_i,-1)* 0.08em) -.01em 0   var(--c),
-      calc(var(--_i,-1)*-0.08em)  .01em 2px #0004;
-    outline-offset: .1em;
-    transition: 0.3s;
-  }
-  
-  .button2:hover,
-  .button2:focus-visible {
-    --_p: 0%;
-    --_i: 1;
-  }
-  .button2:active {
-    text-shadow: none;
-    color: var(--c);
-    box-shadow: inset 0 0 9e9q #0005;
-    transition: 0s;
-  }
-
-  .button2 {
-    font-family: system-ui, sans-serif;
-    font-weight:bold;
-    font-size: 2.4rem;
-    margin-top: 60px;
-    cursor: pointer;
-    padding: .1em .3em;
-  }
+#hexColorPicker {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 50px;
+}

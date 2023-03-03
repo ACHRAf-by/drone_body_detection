@@ -12,7 +12,7 @@ const removeVideoAndshowAbout = () => {
 
 const About = () => {
   return (
-    <div style={{ overflowY: 'scroll', height: '100vh' }}>
+    <div >
       <div className="section-one" id="videoSection">
       <video autoPlay id='video' onEnded={() => removeVideoAndshowAbout()}>
           <source src = {backgroundVideo} type='video/mp4'/>

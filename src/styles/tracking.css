@@ -7,6 +7,11 @@ section {
     transition: opacity 500ms ease-in-out;
 }
 
+.trackingRow {
+    display: flex;
+    flex-direction: row;
+}
+
 .removed {
     display: none;
 }
