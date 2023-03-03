@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HexColorPicker } from "react-colorful";
 import '../styles/sideButtons.css'
 import TrackingModel from '../scripts/trackingModel';
-import runBodysegment from '../scripts/segmentationModel';
-
+import HumanSegmentationModel from '../scripts/humanSegmentationModel';
 
 //create callbacks for buttons
 
@@ -13,16 +12,26 @@ export function SideButtons () {
     var [selectedColor, setColor] = useState("#b32aa9");
 
     var trackingModel = new TrackingModel();
+    var humanSegmentationModel = new HumanSegmentationModel();
 
     useEffect(() => {
-        const rgbColor = trackingModel.hexToRgb(selectedColor);
-        localStorage.setItem('RGBSelectedColor', rgbColor);
-        console.log("Stored RGB color " + localStorage.getItem('RGBSelectedColor'));
+        try{
+            const rgbColor = trackingModel.hexToRgb(selectedColor);
+            localStorage.setItem('RGBSelectedColor', rgbColor);
+            console.log("Stored RGB color " + localStorage.getItem('RGBSelectedColor'));
+        }
+        catch(e){
+            console.log("caught exception " + e);
+        }
+        
      }, [selectedColor]);
 
      function handleLoadModelStart(){
-        //change hidden state
         setHiddenButton(!hiddenButton);
+        console.log('Open sub-buttons')
+    }
+    
+    function handleClassicModelStart(){
         trackingModel.loadModel("classicTracking");
         trackingModel.setVideoTrackingMode("classicTracking");
     }
@@ -39,7 +48,7 @@ export function SideButtons () {
     function handleBodySegmentationStart(){
         //Load BodyPix model
         console.log("Click button to start BodyPix seg")
-        runBodysegment();
+        humanSegmentationModel.loadModel();
     }
 
     return(
@@ -50,13 +59,13 @@ export function SideButtons () {
                 <span></span>
                 <span></span>
             </button>}
-            { hiddenButton &&< button className="sideButton" onClick={() => {trackingModel.setVideoTrackingMode("classicTracking")}} id='webCamButton'>Classic Tracking
+            { hiddenButton &&< button className="sideButton" onClick={() => handleClassicModelStart()} id='classicButton'>Classic Tracking
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
             </button>}
-            { hiddenButton &&< button className="sideButton" onClick={() => handleBodySegmentationStart()} id='webCamButton'>Segmentation
+            { hiddenButton &&< button className="sideButton" onClick={() => handleBodySegmentationStart()} id='segmentationButton'>Segmentation
                 <span></span>
                 <span></span>
                 <span></span>
@@ -64,7 +73,7 @@ export function SideButtons () {
             </button>}
             <div className="conatainer">
                 {hidden && ( <HexColorPicker id="hexColorPicker" color={selectedColor} onChange={setColor} /> )}
-                { hiddenButton && <button className="sideButton" onClick={ () => handleOnClickColor()}>{hidden ? "Close Colors Panel" : "Track With Colors"}
+                { hiddenButton && <button className="sideButton" id="colorButton" onClick={ () => handleOnClickColor()}>{hidden ? "Close Colors Panel" : "Track With Colors"}
                     <span></span>
                     <span></span>
                     <span></span>
