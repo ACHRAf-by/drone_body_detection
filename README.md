@@ -30,11 +30,11 @@ Your app is ready to be deployed!
 
 Runs the lint on the code and shows you all the problems (syntax, errors, etc ...).
 
-### Pipeline
+## Pipeline
 
 A complete CI/CD pipeline is created using Gihub Actions. We also use webhooks to send notifications to our Slack Channel.
 
-## Jobs
+### Jobs
 
 - Lint
 Runs the lint on the code and shows you all the problems (syntax, errors, etc ...).
