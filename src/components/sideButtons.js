@@ -14,9 +14,10 @@ export function SideButtons () {
     var trackingModel = new TrackingModel();
 
     useEffect(() => {
-        trackingModel.hexToRgb(selectedColor);
+        const rgColor = trackingModel.hexToRgb(selectedColor);
+        localStorage.setItem('RGBSelectedColor', rgColor);
+        console.log("Stored RGB color " + localStorage.getItem('RGBSelectedColor'));
      }, [selectedColor]);
-
 
      function handleLoadModelStart(){
         //change hidden state
@@ -29,7 +30,7 @@ export function SideButtons () {
         //change hidden state
         setHidden(!hidden)
         //load color model
-        console.log("click on color button");
+        console.log("Click on color button");
         trackingModel.loadModel("colorTracking");
         trackingModel.setVideoTrackingMode("colorTracking")
     }
