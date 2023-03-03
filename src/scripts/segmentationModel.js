@@ -13,25 +13,25 @@ async function runBodysegment(webcamRef, canvasRef) {
 export default runBodysegment;
 
 async function detect(net, webcamRef, canvasRef) {
-    // Check data is available
-    if (
-        typeof webcamRef.current !== "undefined" &&
-        webcamRef.current !== null &&
-        webcamRef.current.video.readyState === 4
-    ) {
+        // Check data is available
+        if (
+            typeof webcamRef.current !== "undefined" &&
+            webcamRef.current !== null &&
+            webcamRef.current.video.readyState === 4
+        ) {
 
-      // Get Video Properties
-      const video = webcamRef.current.video;
-      const videoWidth = webcamRef.current.video.videoWidth;
-      const videoHeight = webcamRef.current.video.videoHeight;
+        // Get Video Properties
+        const video = webcamRef.current.video;
+        const videoWidth = webcamRef.current.video.videoWidth;
+        const videoHeight = webcamRef.current.video.videoHeight;
 
-      // Set video width
-      webcamRef.current.video.width = videoWidth;
-      webcamRef.current.video.height = videoHeight;
+        // Set video width
+        webcamRef.current.video.width = videoWidth;
+        webcamRef.current.video.height = videoHeight;
 
-      // Set canvas height and width
-      canvasRef.current.width = videoWidth;
-      canvasRef.current.height = videoHeight;
+        // Set canvas height and width
+        canvasRef.current.width = videoWidth;
+        canvasRef.current.height = videoHeight;
 
         // Make Detections
         // * One of (see documentation below):

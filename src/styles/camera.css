@@ -1,8 +1,9 @@
 .cam_container{
     display: flex;
+    position: absolute;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 55%;
     border: 1px solid #ccc;
     border-radius: 5px;
     /* aspect-ratio: 16 / 9; */
@@ -11,7 +12,7 @@
 }
 
 .cam_canvas{
-    display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -19,9 +20,20 @@
     border-radius: 5px;
     /* aspect-ratio: 16 / 9; */
     margin: 20px;
+    top: 0;
 }
 
 .liveCameraDiv {
     width: 55%;
     height: auto;
 }
+
+/** .overlay {
+    opacity: 0.66;
+    position: relative;
+    bottom: -700px;
+    left: 0;
+    z-index: 2;
+  }
+
+*/

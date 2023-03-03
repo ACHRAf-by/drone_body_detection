@@ -36,6 +36,7 @@ export default class TrackingModel{
     const strArray = strColor.split(',');
     return strArray;
   }
+  
   async loadModel(videoTrackingMode){
 
     await cocoSsd.load().then(function (loadedModel) {
