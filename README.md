@@ -32,13 +32,13 @@ Runs the lint on the code and shows you all the problems (syntax, errors, etc ..
 
 ## AI Models
 
-We use two different AI classification models, both using [Tensorflow]([https://duckduckgo.com](https://www.tensorflow.org/))
+We use two different AI classification models, both using [Tensorflow]([https://duckduckgo.com](https://www.tensorflow.org/)).
 
 - CocoSSD
-CocoSSD is a model used for object recognition. See the Github repository [here](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd)
+CocoSSD is a model used for object recognition. See the Github repository [here](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
 
 - BodyPix
-BodyPix is a model used for human detection and body segmentation. See the Github repository [here](https://github.com/google-coral/project-bodypix)
+BodyPix is a model used for human detection and body segmentation. See the Github repository [here](https://github.com/google-coral/project-bodypix).
 
 
 ## Pipeline
