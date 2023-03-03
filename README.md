@@ -36,8 +36,10 @@ We use two different AI classification models, both using [Tensorflow]([https://
 
 - CocoSSD
 CocoSSD is a model used for object recognition. See the Github repository [here](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd)
+
 - BodyPix
-BodyPix is a model used for object recognition. See the Github repository [here](https://github.com/google-coral/project-bodypix)
+BodyPix is a model used for human detection and body segmentation. See the Github repository [here](https://github.com/google-coral/project-bodypix)
+
 
 ## Pipeline
 
