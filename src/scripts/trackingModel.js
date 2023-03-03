@@ -22,7 +22,7 @@ export default class TrackingModel{
     this.video = undefined;
     this.liveView = undefined;
     this.children = [];
-    this.detectionThreshold = 400;
+    this.detectionThreshold = 760;
     this.videoTrackingMode = "noTracking";
 
   }
@@ -32,7 +32,9 @@ export default class TrackingModel{
   }
 
   retrieveColorFromWindow(){
-    return localStorage.getItem("RGBSelectedColor");
+    const strColor = localStorage.getItem("RGBSelectedColor");
+    const strArray = strColor.split(',');
+    return strArray;
   }
   async loadModel(videoTrackingMode){
 
@@ -42,7 +44,8 @@ export default class TrackingModel{
       this.video = document.getElementById('webcam');
       this.liveView = document.getElementById('liveView');
     }.bind(this));
-      // getUsermedia parameters.
+      
+    // getUsermedia parameters.
       const constraints = {
         video: true
       };
@@ -66,7 +69,8 @@ export default class TrackingModel{
     // console.log("BOX in getColorDifference = " + boxColor);
     
     // Convert the RGB values to Lab.
-    const selectedColorLab = this.rgbToLab(this.retrieveColorFromWindow()[0], this.retrieveColorFromWindow()[1], this.retrieveColorFromWindow()[2]);
+    const retrievedColor = this.retrieveColorFromWindow();
+    const selectedColorLab = this.rgbToLab(retrievedColor[0], retrievedColor[1], retrievedColor[2]);
     const boxColorLab = this.rgbToLab(boxColor[0], boxColor[1], boxColor[2]);
 
     // Compute the Euclidean distance between the Lab values.
@@ -225,8 +229,8 @@ export default class TrackingModel{
             const colorDifference = this.getColorDifference(boxColor);
             console.log('Detected color: ' + boxColor); // Add this line to log the detected color
             
-            console.log("Before RGB to lab of stored color : " + this.retrieveColorFromWindow());
-            console.log('Input color: ' + this.rgbToLab(this.retrieveColorFromWindow()[0], this.retrieveColorFromWindow()[1], this.retrieveColorFromWindow()[2])); // Add this line to log the detected color
+            // console.log("Before RGB to lab of stored color : " + this.retrieveColorFromWindow());
+            // console.log('Input color: ' + this.rgbToLab(this.retrieveColorFromWindow()[0], this.retrieveColorFromWindow()[1], this.retrieveColorFromWindow()[2])); // Add this line to log the detected color
 
 
             console.log(' color diff: ' + colorDifference); // Add this line to log the detected color
@@ -236,7 +240,7 @@ export default class TrackingModel{
               closestDistance = colorDifference;
             }
             console.log('match color: ' + closestMatch); // Add this line to log the detected color
-            console.log('dsit color: ' + closestDistance); // Add this line to log the detected co
+            console.log('dist color: ' + closestDistance); // Add this line to log the detected color 
 
             const p = document.createElement('p');
             p.innerText = predictions[n].class + ' - with ' +

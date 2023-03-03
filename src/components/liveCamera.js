@@ -10,7 +10,7 @@ const LiveCameraComponent = () => {
   return (
     <div className="trackingRow">
       <div className='liveCameraDiv' id='liveView'>
-        <Webcam className="cam_container" id="webcam" audio={false} autoPlay/>
+        <Webcam className="cam_container" id="webcam" audio={false} autoPlay />
       </div>
       <SideButtons />
     </div>

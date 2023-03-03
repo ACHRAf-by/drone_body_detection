@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { HexColorPicker } from "react-colorful";
 import '../styles/sideButtons.css'
 import TrackingModel from '../scripts/trackingModel';
+import runBodysegment from '../scripts/segmentationModel';
 
 
 //create callbacks for buttons
@@ -14,8 +15,8 @@ export function SideButtons () {
     var trackingModel = new TrackingModel();
 
     useEffect(() => {
-        const rgColor = trackingModel.hexToRgb(selectedColor);
-        localStorage.setItem('RGBSelectedColor', rgColor);
+        const rgbColor = trackingModel.hexToRgb(selectedColor);
+        localStorage.setItem('RGBSelectedColor', rgbColor);
         console.log("Stored RGB color " + localStorage.getItem('RGBSelectedColor'));
      }, [selectedColor]);
 
@@ -35,6 +36,11 @@ export function SideButtons () {
         trackingModel.setVideoTrackingMode("colorTracking")
     }
 
+    function handleBodySegmentationStart(){
+        //Load BodyPix model
+        console.log("Click button to start BodyPix seg")
+        runBodysegment();
+    }
 
     return(
         <div className='sideButtonDiv'>
@@ -45,6 +51,12 @@ export function SideButtons () {
                 <span></span>
             </button>}
             { hiddenButton &&< button className="sideButton" onClick={() => {trackingModel.setVideoTrackingMode("classicTracking")}} id='webCamButton'>Classic Tracking
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>}
+            { hiddenButton &&< button className="sideButton" onClick={() => handleBodySegmentationStart()} id='webCamButton'>Segmentation
                 <span></span>
                 <span></span>
                 <span></span>
