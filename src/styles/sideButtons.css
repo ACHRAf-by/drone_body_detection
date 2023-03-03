@@ -124,3 +124,10 @@
 .sideButton:hover span{
     animation-play-state: paused;
 }
+
+
+#hexColorPicker {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 50px;
+}

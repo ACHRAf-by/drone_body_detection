@@ -1,40 +1,62 @@
-import React, { useState } from "react";
-import { SketchPicker } from "react-color";
+import React, { useState, useEffect } from "react";
+import { HexColorPicker } from "react-colorful";
 import '../styles/sideButtons.css'
-import loadModel from '../scripts/trackingModel';
+import TrackingModel from '../scripts/trackingModel';
 
 
 //create callbacks for buttons
 
 export function SideButtons () {
-    const [color, setColor] = useState("lighblue");
-    const [hidden, setHidden] = useState(false);
-    const pickerStyle = {
-        default: {
-            picker: {
-                position: "absolute",
-                bottom: "40px",
-                right: "300px"
-            }
-        }
-    };
-    
+    var [hidden, setHidden] = useState(false);
+    var [hiddenButton, setHiddenButton] = useState(false);
+    var [selectedColor, setColor] = useState("#b32aa9");
+
+    var trackingModel = new TrackingModel();
+
+    useEffect(() => {
+        trackingModel.hexToRgb(selectedColor);
+     }, [selectedColor]);
+
+
+     function handleLoadModelStart(){
+        //change hidden state
+        setHiddenButton(!hiddenButton);
+        trackingModel.loadModel("classicTracking");
+        trackingModel.setVideoTrackingMode("classicTracking");
+    }
+
+    function handleOnClickColor(){
+        //change hidden state
+        setHidden(!hidden)
+        //load color model
+        console.log("click on color button");
+        trackingModel.loadModel("colorTracking");
+        trackingModel.setVideoTrackingMode("colorTracking")
+    }
+
+
     return(
         <div className='sideButtonDiv'>
-            <button className="sideButton" onClick={loadModel} id='webCamButton'>Start Tracking
+            { !hiddenButton && <button className="sideButton" onClick={() => handleLoadModelStart()} id='webCamButton'>Start Tracking
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </button>}
+            { hiddenButton &&< button className="sideButton" onClick={() => {trackingModel.setVideoTrackingMode("classicTracking")}} id='webCamButton'>Classic Tracking
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>}
             <div className="conatainer">
-                {hidden && ( <SketchPicker styles={pickerStyle} color={color} onChange={(updateColor) => setColor(updateColor.hex)} /> )}
-                <button className="sideButton" onClick={ () => setHidden(!hidden)}>{hidden ? "Close Colors Panel" : "Track With Colors"}
+                {hidden && ( <HexColorPicker id="hexColorPicker" color={selectedColor} onChange={setColor} /> )}
+                { hiddenButton && <button className="sideButton" onClick={ () => handleOnClickColor()}>{hidden ? "Close Colors Panel" : "Track With Colors"}
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                </button>
+                </button>}
             </div>
         </div>
         );
