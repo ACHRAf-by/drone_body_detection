@@ -2,6 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## AI Models
+
+We use two different AI classification models, both using [Tensorflow]([https://duckduckgo.com](https://www.tensorflow.org/)).
+
+- **CocoSSD** :
+CocoSSD is a model used for object recognition. See the Github repository [here](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
+
+- **BodyPix** :
+BodyPix is a model used for human detection and body segmentation. See the Github repository [here](https://github.com/google-coral/project-bodypix).
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -17,7 +28,6 @@ You may also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -27,44 +37,25 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run lint`
 
-### `npm run eject`
+Runs the lint on the code and shows you all the problems (syntax, errors, etc ...).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Pipeline
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+A complete CI/CD pipeline is created using Gihub Actions. We also use webhooks to send notifications to our Slack Channel.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Jobs
 
-## Learn More
+- **Lint** :
+Runs the lint on the code and shows you all the problems (syntax, errors, etc ...).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Test** :
+If the lint is OK, runs all the tests of our test suites (DOM elements, Tracking tests ...).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Merge-to-prod** :
+If the tests are OK, merges the code from MASTER to PRODUCTION branch.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Build** :
+When the merge is done, this job logs in to Docker Hub, builds an image using the Dockerfile and then pushes the image to a DockerHub registry.
